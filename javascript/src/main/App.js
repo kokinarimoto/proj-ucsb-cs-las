@@ -17,6 +17,7 @@ import useSWR from "swr";
 import EditCourse from "main/pages/Courses/EditCourse";
 import NewCourse from "main/pages/Courses/NewCourse";
 import { fetchWithToken } from "main/utils/fetch";
+import tutorPage from "./components/tutor/tutorPage";
 
 function App() {
   const { isLoading, getAccessTokenSilently: getToken } = useAuth0();
@@ -36,6 +37,7 @@ function App() {
       <Container className="flex-grow-1 mt-5">
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/tutor" exact component={tutorPage} />
           <PrivateRoute path="/profile" component={Profile} />
           <AuthorizedRoute path="/admin" component={Admin} authorizedRoles={["admin"]} />
           <AuthorizedRoute path="/courses" exact component={Courses} authorizedRoles={["admin"]} />
